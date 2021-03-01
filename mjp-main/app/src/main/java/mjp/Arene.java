@@ -48,7 +48,6 @@ public class Arene {
                     joueur.observer(ptimo);
                     ptimo.determineAction(ptimo, joueur);
                 } else if(response3.equals("2")) {
-                    joueur.rapprocher(ptimo);
                     if(joueur.rapprocher(ptimo) == 1) {
                         ptimo = Outils.reinitialiserPtimo(ptimo, joueur);
                     } else {
