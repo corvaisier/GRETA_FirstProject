@@ -46,24 +46,26 @@ public class Arene {
         
                 if(response3.equals("1")) {
                     joueur.observer(ptimo);
-                    ptimo.determineAction();
+                    ptimo.determineAction(ptimo, joueur);
                 } else if(response3.equals("2")) {
                     joueur.rapprocher(ptimo);
-                    ptimo.determineAction();
                     if(joueur.rapprocher(ptimo) == 1) {
-                        Outils.reinitialiserPtimo(ptimo, joueur);
+                        ptimo = Outils.reinitialiserPtimo(ptimo, joueur);
+                    } else {
+                        ptimo.determineAction(ptimo, joueur);
                     }
                 } else if(response3.equals("3")) {
                     joueur.danseImpressionnante(ptimo);
-                    ptimo.determineAction();
+                    ptimo.determineAction(ptimo, joueur);
                 } else if(response3.equals("4")) {
-                    joueur.lancerFriandise();
-                    ptimo.determineAction();
+                    joueur.lancerFriandise(ptimo);
+                    ptimo.determineAction(ptimo, joueur);
                 } else if(response3.equals("5")) {
-                    joueur.lancerFlechette();
-                    ptimo.determineAction();
+                    joueur.lancerFlechette(ptimo);
+                    ptimo.determineAction(ptimo, joueur);
                 } else if(response3.equals("6")) {
-                    Outils.reinitialiserPtimo(ptimo, joueur);
+                   joueur.fuir();
+                   ptimo = Outils.reinitialiserPtimo(ptimo, joueur);
                 } else if(response3.equals("0")) {
                     scanner.close();
                 }

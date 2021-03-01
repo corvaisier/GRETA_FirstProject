@@ -10,7 +10,7 @@ public class Pyralia extends Ptimo {
     
  
   public void attaqueMagique(){
-
+    System.out.println("Booum kamea mea dans ta face!");
   }
 
 }

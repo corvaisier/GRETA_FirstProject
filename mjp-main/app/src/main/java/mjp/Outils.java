@@ -8,10 +8,11 @@ public class Outils {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
     
-    public static void reinitialiserPtimo(Ptimo ptimo, ActionJoueur joueur) {
+    public static Ptimo reinitialiserPtimo(Ptimo ptimo, ActionJoueur joueur) {
         ptimo = PtimoFactory.randomPtimo((ActionJoueur) joueur);
         int distance = Outils.randomNum(8, 13);
         Arene.setDistance(distance); 
+        return ptimo;
     }
     public static void sacBleuOuPyralia(Ptimo ptimo) {
         if(ptimo.nom.equals("Sacbleu")) {

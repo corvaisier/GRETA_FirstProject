@@ -40,25 +40,37 @@ public abstract class Ptimo {
         System.out.println("vous avez " + adversaire.vie);
     }
 
-    public void fuit() {
+    public void fuit(Ptimo ptimo, ActionJoueur joueur) {
         System.out.println(this.nom + " fuit!");
-
+        Outils.reinitialiserPtimo(ptimo, joueur);
     }
   
-    public void reculer(){
+    public void reculer(Ptimo ptimo, ActionJoueur joueur){
         if(Arene.getDistance() > 14) {
-            this.fuit();
+            this.fuit(ptimo, joueur);
         }
     }
 
     public abstract void attaqueMagique();
 
-   public void determineAction() {
-       if(this.dominance < 31 && this.stress > 50) {
+    
+   public void determineAction(Ptimo ptimo, ActionJoueur joueur) {
+       if(this.stress == 100) {
+           this.attaqueMagique();
+       }
+       if(Arene.getDistance() > 14) {
+           this.fuit(ptimo, joueur);
+       }
+       if(Arene.getDistance() > 10) {
            this.rugis();
-           this.dominance += 10;
-           this.stress -= 10;
+       }
+       if(this.dominance < 50 && Arene.getDistance() < 5) {
+           this.attaquer(joueur);
+       }
+       if(Arene.getDistance() > 10) {
+           this.reculer(ptimo, joueur);
        }
    }
+   
 
 }
