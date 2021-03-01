@@ -1,9 +1,12 @@
 package mjp;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ActionJoueur extends Joueur {
-
+    
+    ArrayList<String> ptimoEnCage = new ArrayList<String>();
+    
     ActionJoueur(String nom, int vie, int cages, int friandises, int flechette) {
         super(nom, vie, cages, friandises, flechette);
     }
@@ -21,7 +24,7 @@ public class ActionJoueur extends Joueur {
         System.out.println(this.nom + " a " + this.flechette  + " flechettes ");
     }
     protected void distance(){
-        System.out.println("Il est à la distance de: " + this.distance);
+        System.out.println("Il est à la distance de: " + Arene.getDistance());
     }
 
     protected void observer(Ptimo a) {
@@ -48,22 +51,35 @@ public class ActionJoueur extends Joueur {
         System.out.println("ce Ptimo est " + stress + " et " + dominance);
     }
 
-    protected int rapprocher() {
-        int randomNum = ThreadLocalRandom.current().nextInt(3, 8 + 1);
-        this.distance -= randomNum;
-        //System.out.println("randomNum: " + randomNum);
-        //System.out.println("distance dans se raprocher: " + distance);
-        return distance;
+    protected int rapprocher(Ptimo ptimo) {
+        int randomNum = ThreadLocalRandom.current().nextInt(3, 7 + 1);
+        int distance = Arene.getDistance();
+        distance -= randomNum;
+        Arene.setDistance(distance);
+        if(distance < 2) {
+            this.lancerCage(ptimo);
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
-    protected void lancerCage() {
+    private void lancerCage(Ptimo ptimo) {
         if(this.cages < 1) {
-            System.out.println("vous ne disposez plus de fléchette");
+            System.out.println("vous ne disposez plus de cages");
         } else {
-            System.out.println(this.nom + " lance une cage");
+            System.out.println(this.nom + " capture le ptimo");
+            ptimoEnCage.add(ptimo.nom);
             this.cages --;
             this.cages();
         }
+    }
+
+    protected void danseImpressionnante(Ptimo ptimo) {
+        System.out.println(this.nom + " effectue une danse impressionnante");
+        System.out.println(ptimo.nom + " semble impressioné et beaucoup moins féroce que précédemment");
+        int randomNum = ThreadLocalRandom.current().nextInt(7, 21 + 1);
+        ptimo.dominance -= randomNum;
     }
 
     protected void lancerFlechette() {
@@ -85,10 +101,10 @@ public class ActionJoueur extends Joueur {
             this.friandises();
         }
     } 
+
     protected void fuir() {
-        System.out.println(this.nom + " fuit");
+        System.out.println(this.nom + " part");
         this.vie = 100;
         this.vie();
-    }
-    
+    } 
 }

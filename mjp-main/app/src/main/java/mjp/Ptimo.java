@@ -32,6 +32,12 @@ public abstract class Ptimo {
     public abstract void attaqueMagique();
     public abstract int choice(int stress, int dominance, int distance);
 
-   
+   public void determineAction() {
+       if(this.dominance < 31 && this.stress > 50) {
+           this.rugis();
+           this.dominance += 10;
+           this.stress -= 10;
+       }
+   }
 
 }

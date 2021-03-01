@@ -4,8 +4,8 @@ public class SacBleu extends Ptimo {
 
   public SacBleu(String nom) {
     super(nom);
-    stress = 50;
-    dominance = 70;
+    stress = 70;
+    dominance = 19;
   }
     
   public void rugis() {
@@ -16,9 +16,11 @@ public class SacBleu extends Ptimo {
       adversaire.vie -= 20;
       System.out.println(adversaire.vie);
   }
+
   public void reculer(){
 
   }
+  
   public void attaqueMagique(){
 
   }
