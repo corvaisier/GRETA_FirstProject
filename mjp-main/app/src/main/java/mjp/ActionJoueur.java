@@ -52,7 +52,7 @@ public class ActionJoueur extends Joueur {
     }
 
     protected int rapprocher(Ptimo ptimo) {
-        int randomNum = ThreadLocalRandom.current().nextInt(3, 7 + 1);
+        int randomNum = Outils.randomNum(3, 8);
         int distance = Arene.getDistance();
         distance -= randomNum;
         Arene.setDistance(distance);
@@ -69,7 +69,7 @@ public class ActionJoueur extends Joueur {
             System.out.println("vous ne disposez plus de cages");
         } else {
             System.out.println(this.nom + " capture le ptimo");
-            ptimoEnCage.add(ptimo.nom);
+            Outils.sacBleuOuPyralia(ptimo);
             this.cages --;
             this.cages();
         }

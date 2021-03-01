@@ -6,6 +6,8 @@ public class Joueur {
     int cages;
     int friandises;
     int flechette;
+    private static int sacbleuCapture = 0;
+    private static int pyraliaCapture = 0;
   
     Joueur(String nom, int vie, int cages, int friandises, int flechette){
         this.nom = nom;
@@ -14,7 +16,21 @@ public class Joueur {
         this.friandises = friandises;
         this.flechette = flechette;
     }
-}
+    public static void setSacbleuCapture() {
+        Joueur.sacbleuCapture += 1;
+    }
+
+    public static int getSacbleuCapture() {
+        return sacbleuCapture;
+    }
+    public static void setPyraliaCapture() {
+        Joueur.pyraliaCapture +=1;
+    }
+
+    public static int getPyraliaCapturee() {
+        return pyraliaCapture;
+    }
+    }
 
 	
 

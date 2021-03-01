@@ -26,11 +26,32 @@ public abstract class Ptimo {
         return this.dominance;
     }
 
-	public abstract void rugis();
-    public abstract void attaquer(Joueur adversaire);
-    public abstract void reculer();
+
+
+    public void rugis() {
+        System.out.println(this.nom + ": GGRRRrrrr!");
+        this.stress -= 10;
+        this.dominance += 10;
+    }
+      
+    public void attaquer(Joueur adversaire) {
+        System.out.println(this.nom + " attaque");
+        adversaire.vie -= 20;
+        System.out.println("vous avez " + adversaire.vie);
+    }
+
+    public void fuit() {
+        System.out.println(this.nom + " fuit!");
+
+    }
+  
+    public void reculer(){
+        if(Arene.getDistance() > 14) {
+            this.fuit();
+        }
+    }
+
     public abstract void attaqueMagique();
-    public abstract int choice(int stress, int dominance, int distance);
 
    public void determineAction() {
        if(this.dominance < 31 && this.stress > 50) {

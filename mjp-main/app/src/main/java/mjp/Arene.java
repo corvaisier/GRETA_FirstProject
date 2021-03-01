@@ -1,12 +1,12 @@
 package mjp;
 
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Arene {
 
-    private static int distance = ThreadLocalRandom.current().nextInt(8, 13 + 1);
-    
+    private static int distance = Outils.randomNum(8, 15);
+
+
 
     public static void setDistance(int distance) {
         Arene.distance = distance;
@@ -16,6 +16,7 @@ public class Arene {
         return distance;
     }
 
+    
     public static void game(Ptimo ptimo, ActionJoueur joueur) {
 
         // début du scanner/interaction avec l'utilisateur
@@ -29,7 +30,7 @@ public class Arene {
             if (response.equals("Y")) {
                 System.out.println(String.format(" "));
                 System.out.println(
-                    String.format(ptimo.nom + " est à " + Arene.getDistance() + "m que souhaitez vous faire?"));
+                    String.format(ptimo.nom + " est à " + Arene.getDistance() + " m que souhaitez vous faire?"));
                     System.out.println(String.format(" "));
                     System.out.println(String.format("[1] Voulez vous observer ce Ptimo? "));
                     System.out.println(String.format("[2] Voulez vous vous rapprocher? "));
@@ -50,9 +51,7 @@ public class Arene {
                     joueur.rapprocher(ptimo);
                     ptimo.determineAction();
                     if(joueur.rapprocher(ptimo) == 1) {
-                        ptimo = PtimoFactory.randomPtimo((ActionJoueur) joueur);
-                        int distance = ThreadLocalRandom.current().nextInt(8, 13 + 1); 
-                        Arene.setDistance(distance);
+                        Outils.reinitialiserPtimo(ptimo, joueur);
                     }
                 } else if(response3.equals("3")) {
                     joueur.danseImpressionnante(ptimo);
@@ -64,9 +63,7 @@ public class Arene {
                     joueur.lancerFlechette();
                     ptimo.determineAction();
                 } else if(response3.equals("6")) {
-                    ptimo = PtimoFactory.randomPtimo((ActionJoueur) joueur);
-                    int distance = ThreadLocalRandom.current().nextInt(8, 13 + 1);
-                    Arene.setDistance(distance); 
+                    Outils.reinitialiserPtimo(ptimo, joueur);
                 } else if(response3.equals("0")) {
                     scanner.close();
                 }
