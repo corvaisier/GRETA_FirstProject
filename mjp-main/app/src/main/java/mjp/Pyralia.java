@@ -9,8 +9,10 @@ public class Pyralia extends Ptimo {
   }
     
  
-  public void attaqueMagique(){
-    System.out.println("Booum kamea mea dans ta face!");
+  public void attaqueMagique(Joueur joueur){
+    System.out.println(this.nom + " vous lance une boule de feu!");
+    joueur.vie -= 35;
+    System.out.println("vous avez " + joueur.vie);
   }
 
 }

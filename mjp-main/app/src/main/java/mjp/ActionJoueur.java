@@ -53,12 +53,10 @@ public class ActionJoueur extends Joueur {
 
     protected int rapprocher(Ptimo ptimo) {
         int randomNum = Outils.randomNum(3, 8);
-        System.out.println("distance random " + randomNum);
 
         int distance = Arene.getDistance();
         distance -= randomNum;
         Arene.setDistance(distance);
-        System.out.println("distance après " + distance);
         if(distance < 2) {
             this.lancerCage(ptimo);
             return 1;

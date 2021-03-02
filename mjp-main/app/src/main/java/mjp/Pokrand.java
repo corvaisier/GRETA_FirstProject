@@ -1,5 +1,6 @@
 package mjp;
 
+
 public class Pokrand extends Ptimo {
 
     public Pokrand(String nom) {
@@ -9,9 +10,13 @@ public class Pokrand extends Ptimo {
     }
       
    
-    public void attaqueMagique(){
-      System.out.println("Booum kamea mea dans ta face!");
+    public void attaqueMagique(Joueur joueur){
+      System.out.println(this.nom + " sort un jeu de cartes!");
+      System.out.println("*********************************************************************");
+      joueur.vie -= 35;
+      System.out.println("vous avez " + joueur.vie);
     }
+
   
   }
-  
+   

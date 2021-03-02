@@ -7,11 +7,12 @@ public class SacBleu extends Ptimo {
     stress = 70;
     dominance = 19;
   }
-    
-  
 
-  public void attaqueMagique(){
-    System.out.println("Booum kamea mea dans ta face!");
+
+  public void attaqueMagique(Joueur joueur){
+    System.out.println(this.nom + " provoque une tempête de glace!");
+    joueur.vie -= 35;
+    System.out.println("vous avez " + joueur.vie);
   }
 
 }

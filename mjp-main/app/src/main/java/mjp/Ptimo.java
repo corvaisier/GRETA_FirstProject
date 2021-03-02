@@ -13,6 +13,8 @@ public abstract class Ptimo {
     public void setStress(int stress){
         this.stress = Math.min(stress, 100);
         this.stress = Math.max(stress, 0);
+        ///////////////////////////////////////////////////////////////////////////////////////
+        this.stress = 100;
 
     }
     public int getStress(int stress) {
@@ -27,17 +29,17 @@ public abstract class Ptimo {
     }
 
 
-
+//listes des différentes actions possibles du ptimo
     public void rugis() {
         System.out.println(this.nom + ": GGRRRrrrr!");
         this.stress -= 10;
         this.dominance += 10;
     }
       
-    public void attaquer(Joueur adversaire) {
+    public void attaquer(Joueur joueur) {
         System.out.println(this.nom + " attaque");
-        adversaire.vie -= 20;
-        System.out.println("vous avez " + adversaire.vie);
+        joueur.vie -= 20;
+        System.out.println("vous avez " + joueur.vie);
     }
 
     public void fuit(Ptimo ptimo, ActionJoueur joueur) {
@@ -51,26 +53,49 @@ public abstract class Ptimo {
         }
     }
 
-    public abstract void attaqueMagique();
+    public abstract void attaqueMagique(Joueur joueur);
 
     
+//systeme de choix d'actions à refacto
    public void determineAction(Ptimo ptimo, ActionJoueur joueur) {
-       if(this.stress == 100) {
-           this.attaqueMagique();
-       }
-       if(Arene.getDistance() > 14) {
-           this.fuit(ptimo, joueur);
-       }
-       if(Arene.getDistance() > 10) {
-           this.rugis();
-       }
-       if(this.dominance < 50 && Arene.getDistance() < 5) {
-           this.attaquer(joueur);
-       }
-       if(Arene.getDistance() > 10) {
-           this.reculer(ptimo, joueur);
-       }
-   }
+        int randomNum = Outils.randomNum(0,  100);
+        if(this.stress == 100) {
+            this.attaqueMagique(joueur);
+        } else if(Arene.getDistance() > 14)  {
+            this.fuit(ptimo, joueur);
+        } else {
+            if(randomNum < 51) {
+                this.magicOuPhysique(joueur);
+            } else {
+                this.rugisOuFuit(ptimo, joueur);
+            }
+        }
    
+   }
+
+
+   public void magicOuPhysique(ActionJoueur joueur) {
+        int randomNum = Outils.randomNum(0,  100);
+
+            if(randomNum > 49 && this.dominance < 40) {
+                this.attaquer(joueur);;
+            } else if(randomNum > 70 && this.dominance > 50 &&  this.stress > 60) {
+                this.attaqueMagique(joueur);
+            } else  {
+                this.attaquer(joueur);
+            }    
+   }
+
+   public void rugisOuFuit(Ptimo ptimo, ActionJoueur joueur) {
+       int randomNum = Outils.randomNum(0,  100);
+      
+            if(randomNum > 49 && this.dominance < 40) {
+                this.fuit(ptimo, joueur);
+            } else if(randomNum > 50 && this.dominance > 40) {
+                this.rugis();
+            } else  {
+                this.rugis();
+            }    
+   }
 
 }
