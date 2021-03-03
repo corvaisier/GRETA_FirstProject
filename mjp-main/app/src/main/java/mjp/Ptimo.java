@@ -59,7 +59,7 @@ public abstract class Ptimo {
 //systeme de choix d'actions à refacto
    public void determineAction(Ptimo ptimo, ActionJoueur joueur) {
         int randomNum = Outils.randomNum(0,  100);
-        if(this.stress == 100) {
+        if(this.dominance == 100) {
             this.attaqueMagique(joueur);
         } else if(Arene.getDistance() > 14)  {
             this.fuit(ptimo, joueur);

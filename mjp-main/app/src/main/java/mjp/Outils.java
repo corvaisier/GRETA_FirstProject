@@ -14,15 +14,20 @@ public class Outils {
         Arene.setDistance(distance); 
         return ptimo;
     }
-    public static void sacBleuOuPyralia(Ptimo ptimo) {
+
+    public static boolean sacBleuPyraliaOuPokrand(Ptimo ptimo) {
         if(ptimo.nom.equals("Sacbleu")) {
             Joueur.setSacbleuCapture();
+            return false;
         } else if(ptimo.nom.equals("Pyralia")) {
             Joueur.setPyraliaCapture();
-        } else {
-
-        }
+            return false;
+        } else{
+            System.out.println("Vous avez gagné!");
+            return true;
+        }    
     }
+    
     public static boolean pokrandConditions() {
         if((Joueur.getPyraliaCapturee() + Joueur.getSacbleuCapture() > 3) && Joueur.getSacbleuCapture() > 0 && Joueur.getPyraliaCapturee() > 0) {
             return true;
