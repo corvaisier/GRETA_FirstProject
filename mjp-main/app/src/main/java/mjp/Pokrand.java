@@ -38,6 +38,7 @@ public class Pokrand extends Ptimo {
         System.out.println(this.nom + " fait une attaque magique classique");
       } else{
         System.out.println(this.nom + " perd 10pts de dominance");
+        this.dominance -= 10;
       }
     }
   }

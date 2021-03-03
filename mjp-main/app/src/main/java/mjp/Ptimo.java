@@ -13,9 +13,6 @@ public abstract class Ptimo {
     public void setStress(int stress){
         this.stress = Math.min(stress, 100);
         this.stress = Math.max(stress, 0);
-        ///////////////////////////////////////////////////////////////////////////////////////
-        this.stress = 100;
-
     }
     public int getStress(int stress) {
         return this.stress;

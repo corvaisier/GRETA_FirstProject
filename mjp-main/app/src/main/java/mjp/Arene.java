@@ -15,6 +15,7 @@ public class Arene {
     public static int getDistance() {
         return distance;
     }
+  
 
     
     public static void game(Ptimo ptimo, ActionJoueur joueur) {
@@ -26,7 +27,7 @@ public class Arene {
 
         String response = scanner.next();
 
-        while (joueur.vie > 0) {
+        while (Outils.finJeu(joueur)) {
             if (response.equals("Y")) {
                 System.out.println(String.format(" "));
                 System.out.println(

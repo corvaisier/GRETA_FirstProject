@@ -14,14 +14,13 @@ public class GestionCartes {
         for (int i = 0; i < couleur.length - 1; i++) {
             deckDeNombre.add(couleur[i]);
         }
-
+        //mélange du paquet
         Collections.shuffle(deckDeNombre);
 
         ArrayList<String> mainDeNombre = new ArrayList<String>();
         for (int i = 0; i < 5; i++) {
             mainDeNombre.add(deckDeNombre.get(i));
             //System.out.println("baba:" + mainDeNombre.get(i));
-
         }
         return mainDeNombre;
     }
@@ -35,6 +34,7 @@ public class GestionCartes {
           for (int j = 0; j < famille.length - 1; j++) {
             deckOfFamille.add(famille[j]);
           } 
+          //mélange du paquet
           Collections.shuffle(deckOfFamille);
 
           ArrayList<String> mainFamille = new ArrayList<String>(); 
@@ -45,7 +45,5 @@ public class GestionCartes {
         }
           return mainFamille;
     }
-
-    
     
 }

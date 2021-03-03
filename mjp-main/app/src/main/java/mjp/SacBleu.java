@@ -7,8 +7,6 @@ public class SacBleu extends Ptimo {
     stress = 70;
     dominance = 19;
   }
-
-
   public void attaqueMagique(Joueur joueur){
     System.out.println(this.nom + " provoque une tempête de glace!");
     joueur.vie -= 35;

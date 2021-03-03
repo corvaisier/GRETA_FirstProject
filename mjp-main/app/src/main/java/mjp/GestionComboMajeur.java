@@ -10,39 +10,38 @@ public class GestionComboMajeur {
 
     public static boolean bas(ArrayList<String> nombres){
         if(paire(similaire(nombres))) {
-         System.out.println("cartes bas");
+         System.out.println("combo bas");
             return true;
         } 
         return false;
      }
     public static boolean moyen(ArrayList<String> famille, ArrayList<String> nombres){
         if(brelan(similaire(nombres))) {
-         System.out.println("cartes moyen");
+         System.out.println("combo moyen");
             return true;
         } else if(quinte(nombres)) {
-         System.out.println("cartes moyen");
-         return true;
-         }  else if(flush(famille)) {
-             System.out.println("cartes moyen");
-             return true;
+            System.out.println("combo moyen");
+            return true;
+         } else if(flush(famille)) {
+            System.out.println("combo moyen");
+            return true;
          }
-         System.out.println("pas de cartes moyen");
+         System.out.println("pas de combo moyen");
          return false;
      }
  
-
     public static boolean majeur(ArrayList<String> famille, ArrayList<String> nombres){
        if(full(similaire(nombres))) {
-        System.out.println("cartes majeur");
+           System.out.println("combo majeur");
            return true;
        } else if(quinteFlush(famille, nombres)) {
-        System.out.println("cartes majeur");
-        return true;
-        }  else if(carre(similaire(famille))) {
-            System.out.println("cartes majeur");
+            System.out.println("combo majeur");
+            return true;
+        } else if(carre(similaire(famille))) {
+            System.out.println("combo majeur");
             return true;
         }
-        System.out.println("pas de cartes majeur");
+        System.out.println("pas de combo majeur");
         return false;
     }
 
@@ -60,11 +59,11 @@ public class GestionComboMajeur {
         Collections.replaceAll(nombres,"K","13");
         Collections.replaceAll(nombres,"A","14");
         ArrayList<Integer> list = new ArrayList<Integer>();
+        
         for(int i = 0; i < nombres.size(); i++) {
             int x = Integer.parseInt(nombres.get(i));
             list.add(x);
         }
-
         int accu = 0;
         int acc = 0;
         for(int i = 0; i < list.size() - 1; i++) {
@@ -115,13 +114,13 @@ public class GestionComboMajeur {
         if(nombres.get(0) == 3) {        
             System.out.println("brelan");
             return true;
-    } else if(nombres.size()>1) {
-        if(nombres.get(1) == 3) {
-            System.out.println("brelan");
-            return true;
+        } else if(nombres.size()>1) {
+            if(nombres.get(1) == 3) {
+                System.out.println("brelan");
+                return true;
+            }
         }
-}
-        return false;
+            return false;
     }
     public static boolean carre(ArrayList<Integer> nombres){
         if(nombres.get(0) == 4) {           

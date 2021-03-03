@@ -1,7 +1,6 @@
 package mjp;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class ActionJoueur extends Joueur {
     
@@ -79,7 +78,7 @@ public class ActionJoueur extends Joueur {
     protected void danseImpressionnante(Ptimo ptimo) {
         System.out.println(this.nom + " effectue une danse impressionnante");
         System.out.println(ptimo.nom + " semble impressioné et beaucoup moins féroce que précédemment");
-        int randomNum = ThreadLocalRandom.current().nextInt(7, 21 + 1);
+        int randomNum = Outils.randomNum(7, 21);
         ptimo.dominance -= randomNum;
     }
 
@@ -96,6 +95,8 @@ public class ActionJoueur extends Joueur {
             } else {
                 System.out.println(this.nom + " loupe son lancé de fléchette, ce qui augmente le stress du ptimo!");
                 ptimo.stress += 20;
+                this.flechette --;
+                this.flechette();
             }
         }
     }

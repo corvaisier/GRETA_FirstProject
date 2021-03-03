@@ -24,6 +24,7 @@ public class Outils {
             return false;
         } else{
             System.out.println("Vous avez gagné!");
+            Joueur.setPokrandCapture();
             return true;
         }    
     }
@@ -33,5 +34,18 @@ public class Outils {
             return true;
         }
         return false;
+    }
+    public static boolean finJeu(ActionJoueur joueur) {
+        Boolean resultat = true;
+        if(joueur.vie < 1) {
+            resultat =  false;
+        } 
+        if(Joueur.getPokrandCapture() > 0) {
+            resultat =  false;
+        } 
+        if(joueur.cages < 1){
+            resultat =  false;
+        }
+        return resultat;
     }
 }
